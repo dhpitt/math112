@@ -32,7 +32,7 @@ g4 = func_string
 for i in range(4):
     g4 = g4.replace("x",func_string)
 
-print(g4)
+print(g4)k
 '''
 
 # Create the orbits for P2
