@@ -11,16 +11,17 @@ def g4(x):
     return 4*x*(1-x)
 
 def fourthIterate(x):
-    for i in range(4):
+    for _ in range(4):
         x = g4(x)
     return x
 
 def roots_fourth(x):
     return fourthIterate(x)-x
 def iterate(x,n=4):
-    for i in range(n):
+    for _ in range(n):
         x = g4(x)
     return x
+
 
 slices = list(range(1001))
 slices = np.divide(slices,1000)
@@ -65,18 +66,28 @@ for i in deltaFour:
     if abs(i[1]) <= 0.00775:
         pointsFour.append(i[0])
 
-guesses = list(range(18))
-guesses = np.divide(guesses,17)
+guesses = list(range(30))
+guesses = np.divide(guesses,29)
 period_4_points = set()
 for i in guesses:
     # fsolve returns an ndarray, index 0 is float
     period_4_points.add(fsolve(roots_fourth,i)[0]) 
 
 rounded4 = [round(i,4) for i in period_4_points]
+rounded4 = set(rounded4)
+rounded4 = list(rounded4)
 rounded4 = sorted(rounded4)
+rounded4.remove(rounded4[6]) # this is a point that's equidistant from 2 fixed points
 ax.scatter(rounded4,rounded4,color='red')
 
-print(rounded4)
+print("Points of period 4: " + str(rounded4))
+
+min4 = rounded4
+min4.remove(min4[0])
+min4.remove(min4[5])
+min4.remove(min4[9])
+min4.remove(min4[11])
+print("Minimal points of period 4: " + str(min4))
 #print([round(p,4) for p in pointsFour])
 #print(pointsThree)
 #print(pointsTwo)

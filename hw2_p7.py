@@ -10,7 +10,7 @@ def doubling_Map(x):
         return 2*x
 
 def dN(x,n=5):
-    for i in range(n):
+    for _ in range(n):
         x = doubling_Map(x)
     return x
 

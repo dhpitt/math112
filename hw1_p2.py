@@ -3,7 +3,7 @@ import matplotlib.pylab as plt
 
 # problem 2
 def g4(x):
-    for i in range(4):
+    for _ in range(4):
         x = 3.5*x*(1-x)
     return x
 
@@ -32,7 +32,7 @@ g4 = func_string
 for i in range(4):
     g4 = g4.replace("x",func_string)
 
-print(g4)k
+print(g4)
 '''
 
 # Create the orbits for P2

@@ -35,7 +35,7 @@ def plot_cobweb(f, x0, nmax=40, X=[0,1], res=500):
         py[n+1] = py[n]
 
     # Plot the path traced out by the iteration.
-    ax.plot(px, py, c='b', alpha=0.7)
+    ax.plot(px, py, c='b', alpha=0.7,lw=1)
 
     # Annotate and tidy the plot.
     ax.minorticks_on()
