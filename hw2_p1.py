@@ -4,8 +4,10 @@
 # to find the roots of g^4(x)-x (fixed points of the 4th iterate)
 
 import matplotlib.pylab as plt
+from matplotlib.pyplot import plot
 import numpy as np
 from scipy.optimize import fsolve
+from cobwebGenerator import plot_cobweb, AnnotatedFunction
 
 def g4(x):
     return 4*x*(1-x)
@@ -80,18 +82,42 @@ rounded4 = sorted(rounded4)
 rounded4.remove(rounded4[6]) # this is a point that's equidistant from 2 fixed points
 ax.scatter(rounded4,rounded4,color='red')
 
-print("Points of period 4: " + str(rounded4))
+#print("Points of period 4: " + str(rounded4))
 
 min4 = rounded4
 min4.remove(min4[0])
 min4.remove(min4[5])
 min4.remove(min4[9])
 min4.remove(min4[11])
-print("Minimal points of period 4: " + str(min4))
+#print("Minimal points of period 4: " + str(min4))
+
+cycles = []
+for i in min4:
+    fourCycle = []
+    member = False
+    for _ in range(4):
+        fourCycle.append(round(i,4))
+        i = g4(i)
+    for i in fourCycle:
+        for j in cycles:
+            if i in j:
+                member = True
+            else: 
+                continue
+    if member == False:
+        cycles.append(fourCycle)
+
+cycles.remove(cycles[-2])
+print("4-cycles: " + str(cycles))
 #print([round(p,4) for p in pointsFour])
 #print(pointsThree)
 #print(pointsTwo)
 #print(len(pointsFour))
 
 plt.show()
+
+func = AnnotatedFunction(lambda x: fourthIterate(x), r'$g^4(x)$')
+
+plot_cobweb(func,0.2780,200)
+plot_cobweb(func,0.2771,200)
 
