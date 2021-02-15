@@ -1,5 +1,6 @@
 import matplotlib.pylab as plt
 import math
+from matplotlib.pyplot import xlabel, ylabel
 import numpy as np
 from scipy.optimize import fsolve
 
@@ -37,6 +38,8 @@ print(period5)
 print(len(period5))
 
 ax = plt.subplot()
+ax.set(xlabel="x")
+ax.set(ylabel=r'$12x (mod 1)$')
 ax.plot(slices,slices)
 ax.plot(slices,[a_map(i,12) for i in slices])
 #ax.plot(slices,[tripling_Map(i) for i in slices])

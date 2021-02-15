@@ -116,8 +116,11 @@ print("4-cycles: " + str(cycles))
 
 plt.show()
 
-func = AnnotatedFunction(lambda x: fourthIterate(x), r'$g^4(x)$')
+func = AnnotatedFunction(lambda x: g4(x), r'$g^4(x)$')
 
 plot_cobweb(func,0.2780,200)
 plot_cobweb(func,0.2771,200)
+
+plot_cobweb(func,0.04,200)
+
 
