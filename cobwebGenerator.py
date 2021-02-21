@@ -23,14 +23,15 @@ def plot_cobweb(f, x0, nmax=40, X=[0,1], res=500):
 
     # Plot y = f(x) and y = x
     ax.plot(x, [f(i) for i in x], c='#444444', lw=2)
-    ax.plot(x, x, c='#444444', lw=2)
+    ax.plot(x, x, c='#ff0000', lw=2)
 
     # Iterate x = f(x) for nmax steps, starting at (x0, 0).
     px, py = np.empty((2,nmax+1,2))
     px[0], py[0] = x0, 0
     for n in range(1, nmax, 2):
         px[n] = px[n-1]
-        py[n] = f(px[n-1])
+        #py[n] = f(px[n-1])
+        py[n] = np.array([f(i) for i in px[n-1]])
         px[n+1] = py[n]
         py[n+1] = py[n]
 
