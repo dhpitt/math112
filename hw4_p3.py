@@ -19,7 +19,8 @@ def iterator(c,x,n):
         x = h(c,x)
     return x
 
-hc = AnnotatedFunction(lambda x: h(x,4), r'$h_c(x)$',)
+h3 = AnnotatedFunction(lambda x: h(x,3), r'$h_c(x)$',)
 sx = AnnotatedFunction(lambda x: np.sin(x), r'$sin(x)$',)
 #plot_cobweb(sx,0.2)
-plot_cobweb(hc,0.2)
+plot_cobweb(h3,0.2)
+plot_cobweb(h3,0.6)
